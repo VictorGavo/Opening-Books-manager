@@ -1,0 +1,7 @@
+node_modules/
+credentials/
+venv/
+.env
+*.log
+token.pickle
+token_keep.pickle

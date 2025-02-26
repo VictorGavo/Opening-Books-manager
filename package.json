@@ -1,0 +1,21 @@
+{
+  "name": "second-brain-mobile-integration",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@google-cloud/logging": "^11.2.0",
+    "dotenv": "^16.4.7",
+    "googleapis": "^144.0.0",
+    "winston": "^3.17.0"
+  }
+}
