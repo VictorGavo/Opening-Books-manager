@@ -56,7 +56,7 @@ def create_keep_note(data):
         print(f"Error creating Google Keep note: {e}")
         return False
     
-if __name__ == "__main__":
+# if __name__ == "__main__":
     # TODO: UPDATE TESTING CODE
     # Example usage [DEPRECIATED]
     # note_title = "Test Note from Script"

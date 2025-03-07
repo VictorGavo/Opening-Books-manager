@@ -5,7 +5,7 @@ from keep_handler import create_keep_note
 
 app = Flask(__name__)
 
-@app.route('/webhook', methods=['POST'])
+@app.route('/webhook', methods=['GET', 'POST'])
 def webhook_handler():
     if request.method == 'POST':
         data = request.get_json()
@@ -14,6 +14,8 @@ def webhook_handler():
         process_form_data(data)
 
         return jsonify({'status': 'success'}), 200
+    elif request.method == 'GET':
+        return "Webhook endpoint is active", 200
     else:
         return jsonify({'error': 'Method Not Allowed'}), 405
     
