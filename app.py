@@ -1,12 +1,18 @@
 from flask import Flask, request, jsonify
+import logging
 import json
 
 from keep_handler import create_keep_note
+
+logging.basicConfig(level=logging.DEBUG)
 
 app = Flask(__name__)
 
 @app.route('/webhook', methods=['GET', 'POST'])
 def webhook_handler():
+    logging.debug(f"Webhook called - Method: {request.method}")
+    logging.debug(f"Headers: {request.headers}")
+    logging.debug(f"Data: {request.get_data()}")
     if request.method == 'POST':
         data = request.get_json()
 
