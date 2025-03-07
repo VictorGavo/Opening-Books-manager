@@ -10,9 +10,21 @@ app = Flask(__name__)
 
 @app.route('/webhook', methods=['GET', 'POST'])
 def webhook_handler():
-    logging.debug(f"Webhook called - Method: {request.method}")
-    logging.debug(f"Headers: {request.headers}")
-    logging.debug(f"Data: {request.get_data()}")
+    logging.info(f"Webhook called - Method: {request.method}")
+    logging.info(f"Headers: {dict(request.headers)}")
+    
+    # Log raw request data
+    raw_data = request.get_data(as_text=True)
+    logging.info(f"Raw Request Data: {raw_data}")
+    
+    try:
+        # Try parsing as JSON
+        data = request.get_json(force=True)
+        logging.info(f"Parsed JSON Data: {data}")
+    except Exception as e:
+        logging.error(f"JSON Parsing Error: {e}")
+        data = raw_data
+        
     if request.method == 'POST':
         data = request.get_json()
 
