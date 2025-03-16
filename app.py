@@ -8,6 +8,25 @@ logging.basicConfig(level=logging.DEBUG)
 
 app = Flask(__name__)
 
+@app.route('/test-webhook', methods=['GET', 'POST'])
+def test_webhook():
+    logging.info(f"Test webhook called - Method: {request.method}")
+    logging.info(f"Headers: {dict(request.headers)}")
+
+    # Log raw request data
+    raw_data = request.get_data(as_text=True)
+    logging.info(f"Raw Request Data: {raw_data}")
+
+    try:
+        # Try parsing as JSON
+        data = request.get_json(force=True)
+        logging.info(f"Parsed JSON Data: {data}")
+        return jsonify({'status': 'success', 'received_data': data}), 200
+    except Exception as e:
+        logging.error(f"JSON Parsing Error: {e}")
+        # Return success even if JSON parsing fails
+        return jsonify({'status': 'success', 'received_raw_data': raw_data}), 200
+
 @app.route('/webhook', methods=['GET', 'POST'])
 def webhook_handler():
     logging.info(f"Webhook called - Method: {request.method}")
@@ -37,6 +56,7 @@ def webhook_handler():
     else:
         return jsonify({'error': 'Method Not Allowed'}), 405
     
+
 def process_form_data(data):
     """
     Processes the data received from the Google Form submission.
