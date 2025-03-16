@@ -36,6 +36,10 @@ def create_keep_note(data):
         master_token = get_master_token(email)
 
         if not master_token:
+            print("Keyring failed, trying environment variable...")
+            master_token = os.environ.get('MASTER_TOKEN')
+
+        if not master_token:
             print("Error: Master token not found. Please store it using keyring.set_password().")
             return False
 
