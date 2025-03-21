@@ -1,7 +1,7 @@
 # Handles Google Keep interactions
 import gkeepapi
 import os
-from auth import get_master_token
+from src.auth.auth import get_master_token
 import datetime
 
 import sys

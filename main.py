@@ -1,8 +1,8 @@
 # Main scirpt to orchestrate the process
-from config import SOD_ID
-from forms_handler import get_form_responses
-from keep_handler import create_keep_note
-from utils import setup_logging
+from config.config import SOD_ID
+from src.handlers.forms_handler import get_form_responses
+from src.handlers.keep_handler import create_keep_note
+from src.utils.utils import setup_logging
 import logging
 
 logger = setup_logging()
