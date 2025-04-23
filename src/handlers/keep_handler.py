@@ -66,3 +66,11 @@ def create_keep_note(data):
     # note_title = "Test Note from Script"
     # note_text = "This is a test note created using gkeepapi."
     # create_keep_note(note_title, note_text)
+
+"""
+def unpin note(note_id):
+    Copy auth stuff from create_keep_note()
+    note.pinned = False
+    keep.sync()
+"""
+
